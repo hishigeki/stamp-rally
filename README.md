@@ -1,42 +1,26 @@
 # 学園祭Webスタンプラリー
 
-GitHub Pagesで公開できる、HTML/CSS/JavaScriptだけのWebスタンプラリーです。
+## QRコード
 
-## 使い方
-
-1. このフォルダの中身をGitHubリポジトリへアップロードします。
-2. GitHub Pagesを有効にします。
-3. 公開URLを確認します。
-4. QRコードには次の形式のURLを入れます。
+スタンプ取得用:
 
 ```text
-https://ユーザー名.github.io/リポジトリ名/?stamp=01
-https://ユーザー名.github.io/リポジトリ名/?stamp=02
+https://hishigeki.github.io/stamp-rally/?stamp=01
 ...
-https://ユーザー名.github.io/リポジトリ名/?stamp=20
+https://hishigeki.github.io/stamp-rally/?stamp=20
 ```
 
-## ファイル構成
+景品受け取り済み用:
 
 ```text
-index.html
-style.css
-app.js
-images/
-  stamp01.png
-  stamp02.png
-  ...
-  stamp20.png
+https://hishigeki.github.io/stamp-rally/?finish=done
 ```
 
-## 記録方式
+## 景品交換所での使い方
 
-スタンプの取得状況はスマホのブラウザ内の `localStorage` に保存します。
+1. 参加者がコンプリート画面を見せる
+2. 景品を渡す
+3. 景品交換所に掲示した「受け取り済みQR」を参加者が読む
+4. 台紙が「景品受け取り済み」になる
 
-そのため、サーバーやデータベースは不要です。
-
-## 注意
-
-- ブラウザの保存データを削除すると記録も消えます。
-- 別のスマホには記録を引き継げません。
-- 景品受け取り後は「済」と入力すると終了状態になります。
+未コンプリートの状態で受け取り済みQRを読んだ場合は、終了になりません。

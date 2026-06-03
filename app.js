@@ -9,8 +9,6 @@ const progressBar = document.getElementById("progressBar");
 const messageBox = document.getElementById("messageBox");
 const completeArea = document.getElementById("completeArea");
 const finishedArea = document.getElementById("finishedArea");
-const finishInput = document.getElementById("finishInput");
-const finishButton = document.getElementById("finishButton");
 const resetButton = document.getElementById("resetButton");
 
 function loadStamps() {
@@ -18,8 +16,7 @@ function loadStamps() {
   if (!raw) return [];
   try {
     const data = JSON.parse(raw);
-    if (Array.isArray(data)) return data;
-    return [];
+    return Array.isArray(data) ? data : [];
   } catch (e) {
     return [];
   }
@@ -38,53 +35,72 @@ function setFinished() {
   localStorage.setItem(FINISHED_KEY, "true");
 }
 
-function getStampFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  const stamp = params.get("stamp");
-  if (!stamp) return null;
-
-  const normalized = stamp.padStart(2, "0");
-  const number = Number(normalized);
-
-  if (!Number.isInteger(number) || number < 1 || number > STAMP_TOTAL) {
-    return "invalid";
-  }
-
-  return normalized;
-}
-
-function addStampFromUrl() {
-  const stamp = getStampFromUrl();
-  if (!stamp) return;
-
-  if (stamp === "invalid") {
-    showMessage("このQRコードはスタンプラリー用ではありません。", "warning");
-    return;
-  }
-
-  if (isFinished()) {
-    showMessage("この台紙は景品受け取り済みです。", "warning");
-    return;
-  }
-
-  const stamps = loadStamps();
-
-  if (stamps.includes(stamp)) {
-    showMessage(`${stamp}番のスタンプは取得済みです。`, "warning");
-  } else {
-    stamps.push(stamp);
-    saveStamps(stamps);
-    showMessage(`${stamp}番のスタンプを取得しました！`, "success");
-  }
-
-  // QR読取後も同じURLを再読込して重複表示しにくくする
-  const cleanUrl = window.location.origin + window.location.pathname;
-  window.history.replaceState({}, document.title, cleanUrl);
+function isComplete() {
+  return loadStamps().length >= STAMP_TOTAL;
 }
 
 function showMessage(text, type = "info") {
   messageBox.textContent = text;
   messageBox.className = `message ${type}`;
+}
+
+function cleanUrl() {
+  const clean = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, clean);
+}
+
+function getActionFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    stamp: params.get("stamp"),
+    finish: params.get("finish")
+  };
+}
+
+function handleUrlAction() {
+  const { stamp, finish } = getActionFromUrl();
+
+  if (finish === "done") {
+    if (isFinished()) {
+      showMessage("この台紙はすでに景品受け取り済みです。", "success");
+    } else if (isComplete()) {
+      setFinished();
+      showMessage("景品受け取り済みにしました。ご参加ありがとうございました。", "success");
+    } else {
+      showMessage("まだコンプリートしていません。景品交換はできません。", "warning");
+    }
+    cleanUrl();
+    return;
+  }
+
+  if (!stamp) return;
+
+  const normalized = stamp.padStart(2, "0");
+  const number = Number(normalized);
+
+  if (!Number.isInteger(number) || number < 1 || number > STAMP_TOTAL) {
+    showMessage("このQRコードはスタンプラリー用ではありません。", "warning");
+    cleanUrl();
+    return;
+  }
+
+  if (isFinished()) {
+    showMessage("この台紙は景品受け取り済みです。", "warning");
+    cleanUrl();
+    return;
+  }
+
+  const stamps = loadStamps();
+
+  if (stamps.includes(normalized)) {
+    showMessage(`${normalized}番のスタンプは取得済みです。`, "warning");
+  } else {
+    stamps.push(normalized);
+    saveStamps(stamps);
+    showMessage(`${normalized}番のスタンプを取得しました！`, "success");
+  }
+
+  cleanUrl();
 }
 
 function renderBoard() {
@@ -119,7 +135,6 @@ function renderBoard() {
     completeText.textContent = "終了";
     completeArea.classList.add("hidden");
     finishedArea.classList.remove("hidden");
-    showMessage("景品受け取り済みです。ご参加ありがとうございました。", "success");
     return;
   }
 
@@ -134,16 +149,6 @@ function renderBoard() {
   }
 }
 
-finishButton.addEventListener("click", () => {
-  const value = finishInput.value.trim();
-  if (value === "済") {
-    setFinished();
-    renderBoard();
-  } else {
-    showMessage("景品を受け取った後、「済」と入力してください。", "warning");
-  }
-});
-
 resetButton.addEventListener("click", () => {
   const ok = confirm("台紙をリセットします。よろしいですか？");
   if (!ok) return;
@@ -153,5 +158,5 @@ resetButton.addEventListener("click", () => {
   renderBoard();
 });
 
-addStampFromUrl();
+handleUrlAction();
 renderBoard();
