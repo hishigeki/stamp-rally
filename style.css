@@ -1,0 +1,241 @@
+:root {
+  --bg: #fff8fb;
+  --card: #ffffff;
+  --main: #ff7aa8;
+  --main-dark: #e9558a;
+  --sub: #7ac8ff;
+  --text: #333333;
+  --muted: #777777;
+  --border: #ffd3e2;
+  --empty: #f2f2f2;
+  --success: #43b66d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  background:
+    radial-gradient(circle at top left, #ffe4ef 0, transparent 28%),
+    radial-gradient(circle at bottom right, #dff4ff 0, transparent 25%),
+    var(--bg);
+  color: var(--text);
+}
+
+.app {
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 4px 14px;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  color: var(--main-dark);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.55rem, 7vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.small-button {
+  border: none;
+  background: #ffffffcc;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 700;
+}
+
+.message {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  box-shadow: 0 4px 14px rgba(255, 122, 168, 0.12);
+}
+
+.message.success {
+  border-color: #9be3b5;
+  background: #f0fff5;
+}
+
+.message.warning {
+  border-color: #ffd16f;
+  background: #fff8e8;
+}
+
+.progress-card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 18px rgba(120, 80, 120, 0.12);
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+#countText {
+  font-size: 1.4rem;
+  color: var(--main-dark);
+}
+
+#completeText {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  height: 14px;
+  border-radius: 999px;
+  background: #ffe2ec;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--main), var(--sub));
+  transition: width 0.25s ease;
+}
+
+.stamp-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.stamp-slot {
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  border: 2px dashed #e5d4dc;
+  background: #ffffffcc;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(120, 80, 120, 0.08);
+}
+
+.stamp-slot.empty::before {
+  content: attr(data-number);
+  color: #ccb8c2;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.stamp-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+}
+
+.complete-area,
+.finished-area {
+  margin-top: 16px;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(120, 80, 120, 0.12);
+}
+
+.complete-area {
+  border: 3px solid #ffd166;
+}
+
+.complete-area h2,
+.finished-area h2 {
+  margin: 0 0 8px;
+}
+
+.finish-form {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.finish-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.finish-row {
+  display: flex;
+  gap: 8px;
+}
+
+.finish-row input {
+  flex: 1;
+  font-size: 1.2rem;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+}
+
+.finish-row button {
+  border: none;
+  border-radius: 12px;
+  padding: 0 18px;
+  background: var(--success);
+  color: white;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.finished-area {
+  border: 3px solid #9be3b5;
+}
+
+.hidden {
+  display: none;
+}
+
+.footer {
+  margin: 18px 4px 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 380px) {
+  .stamp-board {
+    gap: 6px;
+  }
+
+  .stamp-slot {
+    border-radius: 12px;
+  }
+
+  .app {
+    padding: 10px;
+  }
+}
