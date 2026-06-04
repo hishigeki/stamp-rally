@@ -1,26 +1,18 @@
-# 学園祭Webスタンプラリー
+# 学園祭Webスタンプラリー ランダムURL版
 
-## QRコード
+## 変更点
+- スタンプURLを `?stamp=01` からランダムトークン方式 `?s=ランダム文字列` に変更
+- 画像ファイル名も `stamp01.png` 形式からランダム名に変更
+- Web台紙ページのリセットボタンを削除
+- リセットは管理者用QRコードのみで実行
+- QRコードの印刷文字は人が見て分かるように番号表示
 
-スタンプ取得用:
+## 受け取り済みURL
+https://hishigeki.github.io/stamp-rally/?finish=finish_b317a280f7c7e543842e
 
-```text
-https://hishigeki.github.io/stamp-rally/?stamp=01
-...
-https://hishigeki.github.io/stamp-rally/?stamp=20
-```
+## 管理者リセットURL
+https://hishigeki.github.io/stamp-rally/?reset=reset_91483161618b7fdfb9536438
 
-景品受け取り済み用:
-
-```text
-https://hishigeki.github.io/stamp-rally/?finish=done
-```
-
-## 景品交換所での使い方
-
-1. 参加者がコンプリート画面を見せる
-2. 景品を渡す
-3. 景品交換所に掲示した「受け取り済みQR」を参加者が読む
-4. 台紙が「景品受け取り済み」になる
-
-未コンプリートの状態で受け取り済みQRを読んだ場合は、終了になりません。
+## 注意
+GitHub Pagesは公開サイトなので完全な不正防止にはなりません。
+ただし、番号だけを推測してスタンプを取得することはかなり難しくなります。

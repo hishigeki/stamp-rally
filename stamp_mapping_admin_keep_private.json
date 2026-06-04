@@ -1,0 +1,107 @@
+{
+  "base_url": "https://hishigeki.github.io/stamp-rally/",
+  "finish_token": "finish_b317a280f7c7e543842e",
+  "reset_token": "reset_91483161618b7fdfb9536438",
+  "stamps": [
+    {
+      "number": "01",
+      "token": "a7f3c9d2",
+      "image": "img_03435f282b81.png"
+    },
+    {
+      "number": "02",
+      "token": "m4k8q1v6",
+      "image": "img_6f690724e338.png"
+    },
+    {
+      "number": "03",
+      "token": "r9p2x5n1",
+      "image": "img_90836bfb27b3.png"
+    },
+    {
+      "number": "04",
+      "token": "z6t1h8w3",
+      "image": "img_4ec81eb81905.png"
+    },
+    {
+      "number": "05",
+      "token": "c5u9e2b7",
+      "image": "img_620df7b882e4.png"
+    },
+    {
+      "number": "06",
+      "token": "v2d8s4j9",
+      "image": "img_171783afdc51.png"
+    },
+    {
+      "number": "07",
+      "token": "k7n3y6a1",
+      "image": "img_16c4d067982c.png"
+    },
+    {
+      "number": "08",
+      "token": "p8w5r2t4",
+      "image": "img_0601ebd157dd.png"
+    },
+    {
+      "number": "09",
+      "token": "h3x9c6m2",
+      "image": "img_c5f8bef19628.png"
+    },
+    {
+      "number": "10",
+      "token": "q1b7z4e8",
+      "image": "img_ec8a9f31e5de.png"
+    },
+    {
+      "number": "11",
+      "token": "n6f2v9k3",
+      "image": "img_a7ff22c539d8.png"
+    },
+    {
+      "number": "12",
+      "token": "t4m8p1x7",
+      "image": "img_823a45fc17c2.png"
+    },
+    {
+      "number": "13",
+      "token": "e9j3r6s2",
+      "image": "img_9cd14ea11b8e.png"
+    },
+    {
+      "number": "14",
+      "token": "w5a1q8d4",
+      "image": "img_fc80ad2d97d3.png"
+    },
+    {
+      "number": "15",
+      "token": "y2c7h9n5",
+      "image": "img_a2e67db3c383.png"
+    },
+    {
+      "number": "16",
+      "token": "s8v4k2p6",
+      "image": "img_165039e97a32.png"
+    },
+    {
+      "number": "17",
+      "token": "b3t9m5x1",
+      "image": "img_adacb5521e59.png"
+    },
+    {
+      "number": "18",
+      "token": "d7q2w6a8",
+      "image": "img_5360dbd858b7.png"
+    },
+    {
+      "number": "19",
+      "token": "x1e5n9r3",
+      "image": "img_0deaa6f82e20.png"
+    },
+    {
+      "number": "20",
+      "token": "u6h4z2c8",
+      "image": "img_c85af1fe2332.png"
+    }
+  ]
+}
