@@ -1,18 +1,36 @@
-# 学園祭Webスタンプラリー ランダムURL版
+# 学園祭Webスタンプラリー 本番用パッケージ
 
-## 変更点
-- スタンプURLを `?stamp=01` からランダムトークン方式 `?s=ランダム文字列` に変更
-- 画像ファイル名も `stamp01.png` 形式からランダム名に変更
-- Web台紙ページのリセットボタンを削除
-- リセットは管理者用QRコードのみで実行
-- QRコードの印刷文字は人が見て分かるように番号表示
+## 内容
 
-## 受け取り済みURL
-https://hishigeki.github.io/stamp-rally/?finish=finish_b317a280f7c7e543842e
+- GitHub Pages用Web台紙
+- ランダムURL対応
+- ランダム画像ファイル名対応
+- QRコード20個
+- 受け取り済みQR
+- 管理者リセットQR
+- 管理者用対応表
 
-## 管理者リセットURL
-https://hishigeki.github.io/stamp-rally/?reset=reset_91483161618b7fdfb9536438
+## GitHubへアップロードするもの
+
+このZIPの中身を、リポジトリ `stamp-rally` のルートへ上書きアップロードしてください。
+
+```text
+index.html
+style.css
+app.js
+README.md
+images/
+```
+
+## QRコード
+
+QRコードは別ZIPに入っています。
+
+- `QR_stamp_01.png` ～ `QR_stamp_20.png`
+- `QR_finish_done.png`
+- `QR_admin_reset.png`
 
 ## 注意
-GitHub Pagesは公開サイトなので完全な不正防止にはなりません。
-ただし、番号だけを推測してスタンプを取得することはかなり難しくなります。
+
+`stamp_mapping_admin_keep_private.json` は管理者用対応表です。
+公開リポジトリへ置くとURL対応表が見えるため、必要なければGitHubにはアップロードしないでください。
